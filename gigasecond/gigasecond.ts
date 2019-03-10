@@ -1,12 +1,9 @@
 const gigaseconds = 1e9;
 
 class Gigasecond {
-    birthday: Date
-    constructor(birthday: Date) {
-        this.birthday = birthday;
-    }
+    constructor(private readonly birthday: Date) {}
 
-    date () {
+    date (): Date {
         return new Date(this.birthday.getTime() + gigaseconds * 1000);
     }
 

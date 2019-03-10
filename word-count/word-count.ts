@@ -1,11 +1,6 @@
 export default class Words {
     count(sentence: string): Object {
-        let words = sentence.trim().toLowerCase().split(/\s+/);
-        let uniqueWords = new Set(words);
-        let map = new Map();
-        uniqueWords.forEach(word => {
-            map.set(word, words.filter(w => w === word).length);
-        })
-        return map;
+        let uniqueCounter = (counter: Map<string, number>, word: string) => counter.set(word, (counter.get(word) || 0) + 1);
+        return sentence.trim().toLowerCase().split(/\s+/).reduce(uniqueCounter, new Map());
     }
 }
